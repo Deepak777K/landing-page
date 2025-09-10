@@ -121,30 +121,90 @@ function OverlapDiv() {
 }
 
 function MyModal({ isOpen, close }) {
+	const [formData, setFormData] = useState({
+		name: '',
+		email: '',
+		phoneNo: '',
+	});
+
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setFormData((prevData) => ({
+			...prevData,
+			[name]: value,
+		}));
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log('Form data submitted:', formData);
+		setFormData({
+			name: '',
+			email: '',
+			phoneNo: '',
+		});
+		close();
+	};
+
 	return (
 		<Dialog open={isOpen} as="div" className="relative z-10 focus:outline-none" onClose={close}>
 			<div className="fixed inset-0 z-10 w-screen overflow-y-auto">
 				<div className="flex min-h-full items-center justify-center p-4">
-					<DialogPanel className="w-full max-w-md rounded-xl bg-white/5 p-6 backdrop-blur-2xl">
-						<DialogTitle as="h3" className="text-base font-medium text-white">
-							Payment successful
-						</DialogTitle>
-						<p className="mt-2 text-sm text-white/50">
-							Your payment has been successfully submitted. We’ve sent you an email with all of the details of your order.
-						</p>
-						<div className="mt-4">
-							<Button
-								className="inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm font-semibold text-white shadow-inner shadow-white/10 hover:bg-gray-600"
-								onClick={close}
-							>
-								Got it, thanks!
-							</Button>
+					<DialogPanel className="w-full max-w-md rounded-xl bg-black p-6">
+						<div style={{ display: 'flex', justifyContent: 'center' }}>
+							<Image src='/strykeX.png' width={103} height={27} />
 						</div>
+						<DialogTitle as="h1" className="text-2xl font-semibold text-white text-center">
+							Get&nbsp;
+							<span className="bg-gradient-to-r from-[#0DB50B] to-[#FFCB15] bg-clip-text text-transparent">
+								2 Months Extra Access
+							</span>
+							<br />+ Special Discount Code
+						</DialogTitle>
+
+
+
+						<form onSubmit={handleSubmit} className="mt-4">
+							<div className="space-y-4">
+								<input
+									type="text"
+									name="name"
+									value={formData.name}
+									onChange={handleChange}
+									placeholder="Full Name"
+									className="w-full rounded-md border-0 bg-white/5 py-1.5 px-3 text-sm text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+								/>
+								<input
+									type="email"
+									name="email"
+									value={formData.email}
+									onChange={handleChange}
+									placeholder="Email Address"
+									className="w-full rounded-md border-0 bg-white/5 py-1.5 px-3 text-sm text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+								/>
+								<input
+									type="tel"
+									name="phoneNo"
+									value={formData.phoneNo}
+									onChange={handleChange}
+									placeholder="Phone Number"
+									className="w-full rounded-md border-0 bg-white/5 py-1.5 px-3 text-sm text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+								/>
+							</div>
+							<div className="mt-4">
+								<Button
+									type="submit"
+									className="w-full inline-flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-[#0DB50B] to-[#FFCB15]  px-3 py-1.5 text-sm font-semibold text-black shadow-inner shadow-white/10 hover:bg-gray-600"
+								>
+									Submit
+								</Button>
+							</div>
+						</form>
 					</DialogPanel>
 				</div>
 			</div>
 		</Dialog>
-	)
+	);
 }
 
 export default function Home() {
