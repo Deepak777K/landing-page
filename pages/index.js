@@ -7,7 +7,7 @@ import { Button, Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
 
 function Navbar({ handleShow }) {
 	return (
-		<nav className="w-full rounded-lg bg-black/35">
+		<nav className="w-full rounded-lg bg-white/5 backdrop-blur-2xl">
 			<div className="flex flex-col md:flex-row justify-between items-center p-3">
 				<Link href="/">
 					<Image src='/stock-logo.svg' alt="Logo" width={120} height={48} />
@@ -35,32 +35,32 @@ function Navbar({ handleShow }) {
 
 const data = [
 	{
-		icon: "/file.svg",
+		icon: "/ic1.png",
 		title: "Everything you need to learn about ai & algo trading",
 		para: "The world of trading is moving fast – extremely fast, and in this era of algo trading and artificial intelligence, we will give you a sneak peek into how this new form of trading can significantly increase the odds of being profitable in the market...",
 		rightImg: "/i1.png",
-		bg: '#151e3d'
+		bg: '#000E2E'
 	},
 	{
-		icon: "/file.svg",
+		icon: "/ic2.png",
 		title: "Learn to create , back test and deploy trading bots using our secret strategies",
 		para: "Unleash the power of algorithmic trading tools which lets you create, test, deploy your strategies spanning across price action, smart money concepts...",
 		rightImg: "/i2.png",
-		bg: '#1C352D'
+		bg: '#002323'
 	},
 	{
-		icon: "/file.svg",
+		icon: "/ic3.png",
 		title: "Detailed Verified profit/loss statement & algo trade history",
 		para: "Get access to detailed case studies of verified real trades executed on autopilot from our proprietary custom algo trading robots...",
 		rightImg: "/i3.png",
-		bg: '#043927'
+		bg: '#002419'
 	},
 	{
-		icon: "/file.svg",
+		icon: "/ic4.png",
 		title: "How tools like ChatGPT, TradingView & StrykeX can get you into the top 1% of elite traders",
 		para: "Gone are the days where traders were glued to their screen from 9:15 am till 3:30 pm – scanning, executing, managing their trades manually...",
 		rightImg: "/i4.png",
-		bg: '#4B5320'
+		bg: '#001B26'
 	},
 ];
 
@@ -87,8 +87,7 @@ function OverlapDiv() {
 						style={{
 							display: "flex",
 							height: 'fit-content',
-							border: "1px solid #ccc",
-							borderRadius: "8px",
+							borderRadius: "24px",
 							alignItems: "center",
 							margin: '20px',
 							background: `${item.bg}`,
@@ -100,7 +99,15 @@ function OverlapDiv() {
 								<Image src={item.icon} alt={`Icon ${index + 1}`} width={40} height={40} />
 							</div>
 							<h2 className="text-xl sm:text-2xl font-semibold mb-2 break-words">{item.title}</h2>
-							<p style={{ fontSize: '18px', wordBreak: 'break-word' }}>{item.para}</p>
+							<p style={{
+								color:'#FFFFFFBF',
+								fontSize: '14px', wordBreak: 'break-word',
+								fontWeight: 500,
+								fontStyle: 'normal',
+								fontSize: '18px',
+								lineHeight: '28px',
+								letterSpacing: '0%',
+							}}>{item.para}</p>
 						</div>
 
 						<div className="md:w-1/2">
@@ -237,7 +244,7 @@ export default function Home() {
 						<h1 className="text-4xl sm:text-5xl font-bold mb-4">Introducing</h1>
 						<h1 className="text-4xl sm:text-5xl font-bold mb-4 flex items-center justify-center gap-2">
 							<Image src="/star.svg" alt="Star Icon" width={32} height={32} />
-							AI Powered Signals
+							<span className="bg-gradient-to-r from-[#0DB50B] to-[#FFCB15] bg-clip-text text-transparent">AI Powered</span> Signals
 						</h1>
 
 						<p className="text-lg text-gray-300 mb-8 max-w-xl">
@@ -257,9 +264,7 @@ export default function Home() {
 							</Link>
 						</div>
 
-						<div className="mt-12 w-full max-w-md">
-							<Image src="/hero-img.svg" alt="Hero Image" className="w-full h-auto" width={0} height={0} priority />
-						</div>
+						<Image src="/hero-img.svg" alt="Hero Image" className="w-full h-auto" width={0} height={0} priority style={{ width: '700px' }} />
 					</section>
 				</div>
 			</div>
